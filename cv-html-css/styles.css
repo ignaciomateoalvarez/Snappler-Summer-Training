@@ -15,8 +15,8 @@
     display: flex;
     flex-direction: column;
     width: 40%;
-    padding: 60px;
-    gap: 10px;
+    padding: 67.5px;
+    gap: 11.25px;
     background-color: rgb(235, 235, 235);
 }
 
@@ -34,8 +34,8 @@
 
 .description{
     font-style: italic;
-    font-size: 22px;
-    line-height: 40px;
+    font-size: 1.3rem;
+    line-height: 2.222rem;
 }
 
 .card{
@@ -47,20 +47,19 @@
 }
 
 .card h1, i{
-    display: flex;
-    align-items: center;
-    font-size: 35px;
+    margin-right: 1.5rem;
+    font-size: 2rem;
     gap: 30px;
     color: rgb(82, 82, 82);
 }
 
 .no-bullet-list{
     list-style-type: none;
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .no-bullet-list li{
-    margin: 25px 0px;
+    margin: 25px 0;
 }
 
 .h2{
@@ -69,8 +68,8 @@
 
 #name{
     line-height: 80px;
-    font-size: 60px;
-    margin-bottom: 0px;
+    font-size: 3.333rem;
+    margin-bottom: 0;
     font-weight: 100;
 }
 
@@ -86,5 +85,13 @@
 }
 
 .right-container div:last-child{
-    margin-top: 4.8rem;
+    margin-top: 88.2px;
+}
+ 
+li {
+  padding-left: 0;
+}
+
+ul {
+  padding-left: 20px;
 }
