@@ -15,5 +15,6 @@
     Current user username: <%= @current_user.username %>
     <%= yield %>
 
+    <%= turbo_frame_tag 'modal' %>
   </body>
 </html>

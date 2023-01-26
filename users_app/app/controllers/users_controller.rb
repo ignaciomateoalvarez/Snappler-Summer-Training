@@ -3,6 +3,16 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @following_count = @users
+    .joins(:given_follows)
+    .group('users.id')
+    .count('follows.follower_id')
+    @follower_count = @users
+    .joins(:received_follows)
+    .group('users.id')
+    .count('follows.followed_user_id')
+
+    @current_user_followings = current_user.followings.map(&:id)
   end
 
   def new 
@@ -20,16 +30,26 @@ class UsersController < ApplicationController
 
   def create_follow
     Follow.create(follower_id: @current_user.id, followed_user_id: @user.id)
-    redirect_to users_path
+    render turbo_stream: 
+      turbo_stream.replace('index', partial: @user)
+    #redirect_to users_path
   end
 
   def delete_follow
     delete_follow = Follow.find_by(follower_id: @current_user.id, followed_user_id: @user.id)
     delete_follow.delete
-    redirect_to users_path
+    #redirect_to users_path
   end
 
-  def show; end
+  def show
+    @follower_count = []
+    @follower_count[@user.id] = @user.followers.count
+    
+    @following_count = []
+    @following_count[@user.id] = @user.followings.count
+
+    @current_user_followings = current_user.followings.map(&:id)
+  end
 
   def edit; end
 

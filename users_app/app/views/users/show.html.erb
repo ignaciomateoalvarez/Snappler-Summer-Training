@@ -1,8 +1,6 @@
-<h1>User Details</h1>
-
 <table style='width:60%; text-align:center'>
 
-<thead>
+  <thead>
     <th>
       ID
     </th>
@@ -19,9 +17,15 @@
     </th>
   </thead>
 
-    <tbody>
-        <%= render @user %>
-        <%= link_to 'Home', users_path %>
-    <tbody>
-    
+<tbody>
+  <tr>
+    <h1>User Details</h1>
+    <%= render @user,
+      follower_count: @follower_count,
+      following_count: @following_count %>
+    <%= link_to 'Home', users_path %>
+  </tr>
+
+</tbody>
+
 </table>

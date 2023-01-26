@@ -1,8 +1,8 @@
 <h1>Users Home</h1>
 <h1> La cantidad de usuarios es: <%= @users.count %> </h2>
 <%= link_to 'Crear nuevo usuario', new_user_path %>
-
-<table style='width:60%; text-align:center'>
+<%= @current_user_followings%>
+<table style='width:40%; text-align:center'>
 
   <thead>
     <th>
@@ -22,12 +22,10 @@
   </thead>
 
 <tbody>
-  <% @users.each do |user|%>
-      <%= render partial: "user", locals: { user: user } %>
-      <%# LO ANTERIOR SIMPLIFICADO %>
-      <%# <%= render "user", user: user %> 
-      <%# LO ANTERIOR SIMPLIFICADO, entiende que es una coleccion de usuarios y los recorre %>
-      <%# <%= render @users %>
+  <%= turbo_frame_tag 'index' do %>
+      <%= render @users,
+      follower_count: @follower_count,
+      following_count: @following_count %>
   <% end %>
 </tbody>
 

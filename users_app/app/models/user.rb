@@ -14,8 +14,4 @@ class User < ApplicationRecord
 
     #Validation
     validates :username, presence: true
-
-    def already_followed(another_user)
-        Follow.where(follower_id: id, followed_user_id: another_user.id).exists?
-    end
 end
